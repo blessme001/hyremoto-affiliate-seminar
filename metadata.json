@@ -1,0 +1,6 @@
+{
+  "name": "HYREMOTO — Affiliate Program & Mobility Portal",
+  "description": "Official affiliate program and free online seminar portal for HyreMoto vehicle rental platform in Nigeria, featuring seminar registration, commission calculator, fleet explorer, and attendee hub.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

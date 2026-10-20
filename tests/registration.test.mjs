@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {normaliseSubmission} from '../supabase/functions/register-seminar/validation.ts';
+import {csvCell,registrationCsv} from '../src/lib/csv.ts';
+const valid={fullName:'  Test Attendee  ',email:'Test@Example.com',whatsapp:'+234 814 123 4567',countryResidence:'Nigeria',category:'Individual affiliate',companyName:'stale hidden company',discovery:'LinkedIn',consentRequired:true,website:''};
+test('normalises values and discards stale company on individual registration',()=>{const row=normaliseSubmission(valid);assert.equal(row.email,'test@example.com');assert.equal(row.full_name,'Test Attendee');assert.equal(row.whatsapp,'+2348141234567');assert.equal(row.company_name,null);});
+test('consent must be a boolean true',()=>{for(const consentRequired of [false,'true',1,null])assert.throws(()=>normaliseSubmission({...valid,consentRequired}));});
+test('business category requires a nonblank company',()=>{assert.throws(()=>normaliseSubmission({...valid,category:'Business owner or company representative',companyName:' '}));assert.equal(normaliseSubmission({...valid,category:'Corporate partnership representative',companyName:'Example Ltd'}).company_name,'Example Ltd');});
+test('rejects malformed payloads, unsupported categories and honeypot submissions',()=>{for(const data of [null,[],{...valid,fullName:3},{...valid,category:'VIP'},{...valid,website:'spam'}])assert.throws(()=>normaliseSubmission(data));});
+test('rejects malformed email/phone and oversized fields',()=>{for(const data of [{...valid,email:'bad'},{...valid,whatsapp:'08141234567'},{...valid,fullName:'a'.repeat(121)},{...valid,discovery:'a'.repeat(161)}])assert.throws(()=>normaliseSubmission(data));});
+test('CSV blocks formulas and preserves quotes and commas',()=>{for(const value of ['=HYPERLINK("x")','+2348141234567','-1','@test','  =1+1','\t=1+1'])assert.ok(csvCell(value).startsWith('"\''));assert.equal(csvCell('A, "B"'),'"A, ""B"""');});
+test('CSV has UTF8 BOM, columns, consent data and CRLF rows',()=>{const csv=registrationCsv([{id:'1',event_id:'seminar',full_name:'Test',email:'test@example.com',whatsapp:'+2348141234567',country:'Nigeria',category:'Individual affiliate',company_name:null,source:null,consent_version:'v1',consent_text:'Event updates',consent_at:'2026-10-20T00:00:00Z',created_at:'2026-10-20T00:00:00Z'}]);assert.ok(csv.startsWith('\uFEFF'));assert.ok(csv.includes('"consent_at"'));assert.equal(csv.split('\r\n').length,2);assert.ok(csv.includes('"Event updates"'));});

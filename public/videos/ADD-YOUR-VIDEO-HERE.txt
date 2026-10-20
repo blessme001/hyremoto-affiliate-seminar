@@ -1,0 +1,5 @@
+Place your landscape MP4 in this folder and name it: hero.mp4
+Full project path: public/videos/hero.mp4
+The hero loads it automatically. Do not put it in src or rename this text file to .mp4.
+Recommended: H.264 MP4, 1080p, 10–20 seconds, compressed for web.
+Without the MP4 the hero displays a local forest-green graphic. Visitors see no missing-video message.
