@@ -156,20 +156,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Controls: Video Pause/Play & Scroll Indicator */}
         <div className="flex items-center gap-4 text-xs text-white/60">
-          {ready && !failed && !reducedMotion && <button
-            type="button"
-            onClick={toggleVideo}
-            aria-label={isPlaying ? "Pause background video" : "Play background video"}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/80 focus:outline-none focus:ring-1 focus:ring-[#D4B36A]"
-            title={isPlaying ? "Pause background video" : "Play background video"}
-          >
-            {isPlaying ? (
-              <Pause className="w-3.5 h-3.5 text-[#D4B36A]" />
-            ) : (
-              <Play className="w-3.5 h-3.5 text-[#D4B36A]" />
-            )}
-            <span>{isPlaying ? 'Pause video' : 'Play video'}</span>
-          </button>}
 
           <button
             onClick={onExploreClick}
