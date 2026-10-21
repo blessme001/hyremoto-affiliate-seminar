@@ -71,20 +71,20 @@ export const WhoShouldAttendSection: React.FC<WhoShouldAttendSectionProps> = ({
     <section
       id="who-should-attend"
       aria-labelledby="who-heading"
-      className="py-16 lg:py-20 px-6 lg:px-12 bg-[#F7F4EC] text-[#172822]"
+      className="py-16 lg:py-20 px-6 lg:px-12 bg-[#FFFFFF] text-[#172822]"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="max-w-2xl mb-12 lg:mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-[2px] bg-[#D4B36A]"></span>
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0C3027]/70">
+            <span className="w-8 h-[2px] bg-[#7BCB88]"></span>
+            <span className="text-xs font-bold tracking-widest uppercase text-[#0F3324]/70">
               Participants
             </span>
           </div>
           <h2
             id="who-heading"
-            className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#0C3027] leading-[1.15] mb-4"
+            className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#0F3324] leading-[1.15] mb-4"
           >
             There’s more than one way to be connected.
           </h2>
@@ -105,29 +105,29 @@ export const WhoShouldAttendSection: React.FC<WhoShouldAttendSectionProps> = ({
                 key={persona.id}
                 className={`bg-white p-7 rounded-2xl border transition-all relative overflow-hidden ${
                   isSelected
-                    ? 'border-[#D4B36A] shadow-md ring-2 ring-[#D4B36A]/20'
+                    ? 'border-[#7BCB88] shadow-md ring-2 ring-[#7BCB88]/20'
                     : 'border-[#172822]/10 shadow-sm hover:shadow-md hover:border-[#172822]/20'
                 }`}
               >
                 <div className="flex items-start justify-between mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-[#EFEBE0] flex items-center justify-center text-[#0C3027]">
+                  <div className="w-10 h-10 rounded-lg bg-[#EDF7EF] flex items-center justify-center text-[#0F3324]">
                     <Icon className="w-5 h-5" />
                   </div>
                   {isSelected && (
-                    <span className="text-[10px] uppercase font-bold tracking-wider bg-[#0C3027] text-[#D4B36A] px-2.5 py-0.5 rounded-full">
+                    <span className="text-[10px] uppercase font-bold tracking-wider bg-[#0F3324] text-[#7BCB88] px-2.5 py-0.5 rounded-full">
                       Selected Persona
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-base font-bold text-[#0C3027] mb-2">{persona.title}</h3>
+                <h3 className="text-base font-bold text-[#0F3324] mb-2">{persona.title}</h3>
 
                 <p className="text-sm text-[#4A5B53] leading-relaxed mb-4">{persona.description}</p>
 
                 {/* Persona Breakdown when toggled or hovered */}
                 <div className="pt-3 border-t border-[#172822]/10 text-xs space-y-1.5">
-                  <div className="text-[#0C3027] font-semibold flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4B36A]"></span>
+                  <div className="text-[#0F3324] font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#7BCB88]"></span>
                     <span>Best For: {persona.strength}</span>
                   </div>
 
@@ -140,7 +140,7 @@ export const WhoShouldAttendSection: React.FC<WhoShouldAttendSectionProps> = ({
                       e.stopPropagation();
                       onSelectCategoryForForm(persona.category);
                     }}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#0C3027] hover:text-[#D4B36A] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#0F3324] hover:text-[#7BCB88] transition-colors"
                   >
                     <span>Register in this category</span>
                     <ArrowRight className="w-3.5 h-3.5" />

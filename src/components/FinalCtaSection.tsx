@@ -9,15 +9,15 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onRegisterClic
   return (
     <section
       aria-label="Closing Call to Action"
-      className="py-20 lg:py-28 px-6 lg:px-12 bg-[#08211A] text-white text-center relative overflow-hidden"
+      className="py-20 lg:py-28 px-6 lg:px-12 bg-[#0A2419] text-white text-center relative overflow-hidden"
     >
       {/* Background radial glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#D4B36A]/10 blur-[100px] rounded-full"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#7BCB88]/10 blur-[100px] rounded-full"></div>
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="inline-block w-12 h-1 bg-[#D4B36A] mb-6"></div>
+        <div className="inline-block w-12 h-1 bg-[#7BCB88] mb-6"></div>
 
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-white mb-6">
           Make your next connection count.
@@ -31,7 +31,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onRegisterClic
         <div>
           <button
             onClick={onRegisterClick}
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full text-base font-bold bg-[#D4B36A] text-[#0C3027] hover:bg-[#E8CA88] active:scale-[0.98] transition-all shadow-xl shadow-black/40 group cursor-pointer"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full text-base font-bold bg-[#7BCB88] text-[#0F3324] hover:bg-[#A7E2B1] active:scale-[0.98] transition-all shadow-xl shadow-black/40 group cursor-pointer"
           >
             <span>Register for the Free Seminar</span>
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
@@ -39,7 +39,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onRegisterClic
         </div>
 
         <p className="text-xs text-white/50 mt-4 flex items-center justify-center gap-2">
-          <Sparkles className="w-3.5 h-3.5 text-[#D4B36A]" />
+          <Sparkles className="w-3.5 h-3.5 text-[#7BCB88]" />
           <span>Free online seminar • Date to be announced</span>
         </p>
       </div>

@@ -36,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       id="hero"
       aria-label="Seminar Introduction"
-      className="relative min-h-[94vh] lg:min-h-screen flex flex-col justify-between pt-32 pb-12 lg:pb-16 px-6 lg:px-12 bg-[#0C3027] overflow-hidden text-white"
+      className="relative min-h-[94vh] lg:min-h-screen flex flex-col justify-between pt-32 pb-12 lg:pb-16 px-6 lg:px-12 bg-[#0F3324] overflow-hidden text-white"
     >
       {/* Video Background & Static Fallback */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -72,25 +72,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <path
             d="M-100,500 C300,300 600,750 1100,450 C1300,320 1500,400 1600,380"
             fill="none"
-            stroke="#D4B36A"
+            stroke="#7BCB88"
             strokeDasharray="6,8"
             strokeWidth="1.5"
           ></path>
-          <circle cx="600" cy="750" fill="#D4B36A" r="4"></circle>
-          <circle cx="1100" cy="450" fill="#D4B36A" r="4"></circle>
-          <circle cx="300" cy="300" fill="#D4B36A" r="3"></circle>
+          <circle cx="600" cy="750" fill="#7BCB88" r="4"></circle>
+          <circle cx="1100" cy="450" fill="#7BCB88" r="4"></circle>
+          <circle cx="300" cy="300" fill="#7BCB88" r="3"></circle>
         </svg>
 
         {/* Floating geometric glow accents */}
-        <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D4B36A]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#7BCB88]/10 rounded-full blur-3xl pointer-events-none"></div>
       </div>
 
       {/* Main Content Grid */}
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto py-8">
         <div className="max-w-3xl">
           {/* Category & Type Tag */}
-          <div className="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider uppercase mb-6 text-[#D4B36A]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4B36A] animate-pulse"></span>
+          <div className="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider uppercase mb-6 text-[#7BCB88]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#7BCB88] animate-pulse"></span>
             <span>HYREMOTO AFFILIATE PROGRAM</span>
             <span className="text-white/40">•</span>
             <span className="text-white/90">FREE ONLINE SEMINAR</span>
@@ -100,7 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.08] text-white mb-6">
             Your network.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4B36A] via-[#E8CA88] to-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7BCB88] via-[#A7E2B1] to-white">
               New possibilities.
             </span>
           </h1>
@@ -115,7 +115,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
             <button
               onClick={onReserveClick}
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold bg-[#D4B36A] text-[#0C3027] hover:bg-[#E8CA88] active:scale-[0.98] transition-all shadow-xl shadow-[#08211A]/50 group cursor-pointer"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold bg-[#7BCB88] text-[#0F3324] hover:bg-[#A7E2B1] active:scale-[0.98] transition-all shadow-xl shadow-[#0A2419]/50 group cursor-pointer"
             >
               <span>Reserve Your Free Spot</span>
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 transition-transform" />
@@ -123,7 +123,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             <button
               onClick={onExploreClick}
-              className="inline-flex items-center justify-center text-sm font-medium text-white/80 hover:text-[#D4B36A] transition-colors py-2 group cursor-pointer"
+              className="inline-flex items-center justify-center text-sm font-medium text-white/80 hover:text-[#7BCB88] transition-colors py-2 group cursor-pointer"
             >
               <span>Explore the opportunity</span>
               <ArrowDown className="w-4 h-4 ml-1.5 group-hover:translate-y-1 transition-transform" />
@@ -137,17 +137,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Info Badges */}
         <div className="flex flex-wrap items-center gap-4 sm:gap-8 text-xs sm:text-sm text-white/80 font-normal">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#D4B36A]"></span>
+            <span className="w-2 h-2 rounded-full bg-[#7BCB88]"></span>
             <span className="font-medium text-white">Online seminar</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#D4B36A]" />
+            <Calendar className="w-4 h-4 text-[#7BCB88]" />
             <span>Date to be announced</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-[#D4B36A]" />
+            <ShieldCheck className="w-4 h-4 text-[#7BCB88]" />
             <span>Free registration</span>
           </div>
 
@@ -159,7 +159,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           <button
             onClick={onExploreClick}
-            className="hidden sm:inline-flex items-center gap-1.5 text-white/60 hover:text-[#D4B36A] transition-colors cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 text-white/60 hover:text-[#7BCB88] transition-colors cursor-pointer"
           >
             <span>Scroll</span>
             <ArrowDown className="w-3.5 h-3.5 animate-bounce" />

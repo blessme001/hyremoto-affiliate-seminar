@@ -18,7 +18,7 @@ export default function App() {
   useEffect(() => { const update = () => setAdmin(window.location.hash === '#admin'); window.addEventListener('hashchange', update); return () => window.removeEventListener('hashchange', update); }, []);
   if (admin) return <AdminPage />;
   const navigate = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
-  return <div className="min-h-screen bg-[#F7F4EC] text-[#172822] font-sans">
+  return <div className="min-h-screen bg-[#FFFFFF] text-[#172822] font-sans">
     <a href="#main" className="skip-link">Skip to content</a>
     <Header onNavigateToSection={navigate} />
     <main id="main">
