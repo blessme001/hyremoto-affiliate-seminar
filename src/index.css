@@ -15,7 +15,7 @@
   --color-brand-borderDark: rgba(247, 244, 236, 0.15);
 
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --font-display: "Syne", system-ui, -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 }
 
 ::selection {
