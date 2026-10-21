@@ -8,9 +8,13 @@ interface FinalCtaSectionProps {
 export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onRegisterClick }) => {
   return (
     <section
-      aria-label="Closing Call to Action"
-      className="py-20 lg:py-28 px-6 lg:px-12 bg-[#0A2419] text-white text-center relative overflow-hidden"
-    >
+  aria-label="Closing Call to Action"
+  className="py-20 lg:py-28 px-6 lg:px-12 bg-[#0A2419] text-white text-center relative overflow-hidden bg-cover bg-center"
+  style={{
+    backgroundImage:
+      "linear-gradient(rgba(15, 51, 36, 0.75), rgba(10, 36, 25, 0.88)), url('/images/seminar-background.jpg')",
+  }}
+>
       {/* Background radial glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#7BCB88]/10 blur-[100px] rounded-full"></div>
