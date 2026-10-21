@@ -51,8 +51,25 @@ export function RegistrationSection({preselectedCategory}:{preselectedCategory:s
  <div className="absolute -left-[9999px]" aria-hidden="true"><label htmlFor="website">Leave this field empty</label><input id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={e=>field('website',e.target.value)}/></div>
  <label className="flex gap-3 text-sm leading-relaxed items-start"><input type="checkbox" required checked={form.consentRequired} onChange={e=>field('consentRequired',e.target.checked)} className="mt-1 w-4 h-4 shrink-0 accent-[#0F3324]" aria-invalid={!!errors.consentRequired} aria-describedby={errors.consentRequired?'consent-error':undefined}/><span>{CONSENT_TEXT}</span></label>
  {errors.consentRequired&&<p id="consent-error" className="text-xs text-red-700">{errors.consentRequired}</p>}
- <p className="text-xs text-[#4A5B53] leading-relaxed">Your details are collected to manage seminar registration and event communications. Bank details and identity documents are not required.</p>
- </fieldset>
+<p className="text-xs text-[#4A5B53] leading-relaxed">
+  HYREMOTO uses your details to manage seminar registration and event
+  communications. Bank details and identity documents are not required.
+  For privacy enquiries or requests to access, correct or delete your
+  information, or withdraw consent, email{" "}
+  <a href="mailto:Info@hyremoto.com" className="underline">
+    Info@hyremoto.com
+  </a>
+  . Read our{" "}
+  <a
+    href="https://hyremoto.com/legal#company"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline font-semibold text-[#0F3324]"
+  >
+    Privacy Policy
+  </a>
+  .
+</p> </fieldset>
  {registrationConfigured&&<Turnstile onToken={onToken} reset={reset}/>}
  {failure&&<p role="alert" className="text-sm text-red-800 bg-red-50 p-4 rounded-xl">{failure}</p>}
  <button type="submit" disabled={pending||!registrationConfigured} className="w-full flex items-center justify-center gap-2 rounded-full bg-[#7BCB88] text-[#0F3324] py-4 font-bold hover:bg-[#A7E2B1]">{pending&&<Loader2 className="animate-spin" size={18}/>} {pending?'Saving registration…':registrationConfigured?'Reserve My Free Spot':'Registration Opens Soon'}</button>

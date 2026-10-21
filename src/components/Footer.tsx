@@ -35,6 +35,14 @@ export function Footer({
               {label}
             </button>
           ))}
+                    <a
+            href="https://hyremoto.com/legal#company"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#7BCB88]"
+          >
+            Privacy Policy
+          </a>
         </nav>
 
         <p className="text-xs">
