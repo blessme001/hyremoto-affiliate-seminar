@@ -116,7 +116,7 @@ export function HeroSection({
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-white leading-relaxed max-w-xl font-medium mb-8 drop-shadow-md">
+          <p className="text-lg sm:text-xl text-white/80 leading-relaxed max-w-xl font-light mb-8">
             Explore the HyreMoto referral opportunity at our free online
             seminar. Register your interest to hear when it’s happening.
           </p>
@@ -137,7 +137,7 @@ export function HeroSection({
             <button
               type="button"
               onClick={onExploreClick}
-              className="inline-flex items-center justify-center text-sm font-semibold text-white hover:text-[#A7E2B1] transition-colors py-2 cursor-pointer drop-shadow-md"
+              className="inline-flex items-center justify-center text-sm font-medium text-white/80 hover:text-[#7BCB88] transition-colors py-2 cursor-pointer"
             >
               About the seminar
               <ArrowDown
