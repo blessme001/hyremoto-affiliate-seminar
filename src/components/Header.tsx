@@ -6,9 +6,7 @@ export function Header({
 }: {
   onNavigateToSection: (id: string) => void;
 }) {
-
   const [open, setOpen] = useState(false);
-
 
   useEffect(() => {
     const close = (event: KeyboardEvent) => {
@@ -31,8 +29,8 @@ export function Header({
     onNavigateToSection(id);
   };
 
- return (
-  <header className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6 lg:px-12 py-4 bg-white border-b border-[#0F3324]/10 shadow-sm">
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6 lg:px-12 py-4 bg-white text-[#0F3324] border-b border-[#0F3324]/10 shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         <a
           href="https://hyremoto.com"
@@ -48,7 +46,7 @@ export function Header({
 
         <nav
           aria-label="Main navigation"
-          className="hidden lg:flex gap-7 text-sm text-white/85"
+          className="hidden lg:flex gap-7 text-sm font-medium text-[#0F3324]"
         >
           {links.map(([id, label]) => (
             <a
@@ -58,7 +56,7 @@ export function Header({
                 event.preventDefault();
                 go(id);
               }}
-              className="hover:text-[#7BCB88]"
+              className="hover:text-[#216B42] transition-colors"
             >
               {label}
             </a>
@@ -76,13 +74,17 @@ export function Header({
 
           <button
             type="button"
-            className="lg:hidden p-2 text-white"
+            className="lg:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg bg-[#EDF7EF] text-[#0F3324] border border-[#0F3324]/15 hover:bg-[#DDEFE1] transition-colors"
             aria-label={open ? 'Close navigation' : 'Open navigation'}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen(previous => !previous)}
           >
-            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+            {open ? (
+              <X size={24} strokeWidth={2.5} aria-hidden="true" />
+            ) : (
+              <Menu size={24} strokeWidth={2.5} aria-hidden="true" />
+            )}
           </button>
         </div>
       </div>
@@ -93,7 +95,7 @@ export function Header({
         hidden={!open}
         className={`lg:hidden ${
           open ? 'flex' : 'hidden'
-        } flex-col gap-1 pt-5 text-white`}
+        } max-w-7xl mx-auto flex-col gap-1 pt-5 bg-white text-[#0F3324]`}
       >
         {links.map(([id, label]) => (
           <a
@@ -103,7 +105,7 @@ export function Header({
               event.preventDefault();
               go(id);
             }}
-            className="text-left py-3 border-t border-white/10 hover:text-[#7BCB88]"
+            className="text-left py-3 text-base font-semibold border-t border-[#0F3324]/15 text-[#0F3324] hover:text-[#216B42] transition-colors"
           >
             {label}
           </a>
