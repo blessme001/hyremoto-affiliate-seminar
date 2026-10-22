@@ -1,70 +1,81 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause, Calendar, ShieldCheck, ArrowDown, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Calendar, ArrowDown, ArrowRight } from 'lucide-react';
 
 interface HeroSectionProps {
   onReserveClick: () => void;
   onExploreClick: () => void;
-
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({
+export function HeroSection({
   onReserveClick,
   onExploreClick,
-
-}) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+}: HeroSectionProps) {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [reducedMotion, setReducedMotion] = useState(
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
+
   const posterUrl = `${import.meta.env.BASE_URL}images/hero-poster.svg`;
   const videoUrl = `${import.meta.env.BASE_URL}videos/hero.mp4`;
+
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => setReducedMotion(query.matches);
+
     query.addEventListener('change', update);
     return () => query.removeEventListener('change', update);
   }, []);
-  const toggleVideo = async () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) { try { await video.play(); } catch { setIsPlaying(false); } }
-    else video.pause();
+
+  const handleVideoError = () => {
+    setFailed(true);
+    setReady(false);
   };
 
   return (
     <section
       id="hero"
-      aria-label="Seminar Introduction"
-      className="relative min-h-[94vh] lg:min-h-screen flex flex-col justify-between pt-32 pb-12 lg:pb-16 px-6 lg:px-12 bg-[#0F3324] overflow-hidden text-white"
+      aria-labelledby="hero-heading"
+      className="relative min-h-[85svh] lg:min-h-[90svh] flex flex-col justify-between pt-32 pb-10 lg:pb-12 px-6 lg:px-12 bg-[#0F3324] overflow-hidden text-white"
     >
-      {/* Video Background & Static Fallback */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
+      >
         <img
           alt=""
-          id="hero-fallback-poster"
           src={posterUrl}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {!reducedMotion && !failed && <video
-          ref={videoRef}
-          autoPlay muted loop playsInline preload="metadata"
-          aria-hidden="true" tabIndex={-1}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${ready ? 'opacity-100' : 'opacity-0'}`}
-          style={{ objectPosition: '65% center' }}
-          poster={posterUrl}
-          onCanPlay={() => setReady(true)}
-          onPlaying={() => { setIsPlaying(true); setReady(true); }}
-          onPause={() => setIsPlaying(false)}
-          onError={() => { setFailed(true); setReady(false); setIsPlaying(false); }}
-        ><source src={videoUrl} type="video/mp4" onError={() => { setFailed(true); setReady(false); setIsPlaying(false); }} /></video>}
 
-        {/* Rich Forest Green Dark Cinematic Gradient Overlay */}
-        <div className="absolute inset-0 video-overlay-gradient"></div>
+        {!reducedMotion && !failed && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            tabIndex={-1}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+              ready ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ objectPosition: '65% center' }}
+            poster={posterUrl}
+            onPlaying={() => setReady(true)}
+            onError={handleVideoError}
+          >
+            <source
+              src={videoUrl}
+              type="video/mp4"
+              onError={handleVideoError}
+            />
+          </video>
+        )}
 
-        {/* Subtle architectural route line SVG decorative accent */}
+        <div className="absolute inset-0 video-overlay-gradient" />
+
         <svg
-          className="absolute inset-0 w-full h-full opacity-15 pointer-events-none"
+          className="absolute inset-0 w-full h-full opacity-15"
           preserveAspectRatio="none"
           viewBox="0 0 1440 900"
           xmlns="http://www.w3.org/2000/svg"
@@ -75,29 +86,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             stroke="#7BCB88"
             strokeDasharray="6,8"
             strokeWidth="1.5"
-          ></path>
-          <circle cx="600" cy="750" fill="#7BCB88" r="4"></circle>
-          <circle cx="1100" cy="450" fill="#7BCB88" r="4"></circle>
-          <circle cx="300" cy="300" fill="#7BCB88" r="3"></circle>
+          />
+          <circle cx="600" cy="750" fill="#7BCB88" r="4" />
+          <circle cx="1100" cy="450" fill="#7BCB88" r="4" />
+          <circle cx="300" cy="300" fill="#7BCB88" r="3" />
         </svg>
 
-        {/* Floating geometric glow accents */}
-        <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#7BCB88]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#7BCB88]/10 rounded-full blur-3xl" />
       </div>
 
-      {/* Main Content Grid */}
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto py-8">
         <div className="max-w-3xl">
-          {/* Category & Type Tag */}
-          <div className="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider uppercase mb-6 text-[#7BCB88]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7BCB88] animate-pulse"></span>
-            <span>HYREMOTO AFFILIATE PROGRAM</span>
-            <span className="text-white/40">•</span>
-            <span className="text-white/90">FREE ONLINE SEMINAR</span>
-          </div>
+          <p className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider uppercase mb-6 text-[#7BCB88]">
+            <span
+              aria-hidden="true"
+              className="w-1.5 h-1.5 rounded-full bg-[#7BCB88]"
+            />
+            HyreMoto Affiliate Program
+          </p>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.08] text-white mb-6">
+          <h1
+            id="hero-heading"
+            className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.08] text-white mb-6"
+          >
             Your network.
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7BCB88] via-[#A7E2B1] to-white">
@@ -105,67 +116,58 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
           </h1>
 
-          {/* Supporting text */}
-          <p className="text-lg sm:text-xl text-white/80 leading-relaxed max-w-2xl font-light mb-8">
-            Discover how individuals, creators, agents and businesses can earn commissions by
-            referring customers to HyreMoto, a vehicle rental platform operating in Nigeria.
+          <p className="text-lg sm:text-xl text-white/80 leading-relaxed max-w-xl font-light mb-8">
+            Explore the HyreMoto referral opportunity at our free online
+            seminar. Register your interest to hear when it’s happening.
           </p>
 
-          {/* CTA Cluster */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
             <button
+              type="button"
               onClick={onReserveClick}
               className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold bg-[#7BCB88] text-[#0F3324] hover:bg-[#A7E2B1] active:scale-[0.98] transition-all shadow-xl shadow-[#0A2419]/50 group cursor-pointer"
             >
-              <span>Reserve Your Free Spot</span>
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 transition-transform" />
+              Register My Interest
+              <ArrowRight
+                aria-hidden="true"
+                className="w-4 h-4 ml-2 group-hover:translate-x-1.5 transition-transform"
+              />
             </button>
 
             <button
+              type="button"
               onClick={onExploreClick}
-              className="inline-flex items-center justify-center text-sm font-medium text-white/80 hover:text-[#7BCB88] transition-colors py-2 group cursor-pointer"
+              className="inline-flex items-center justify-center text-sm font-medium text-white/80 hover:text-[#7BCB88] transition-colors py-2 cursor-pointer"
             >
-              <span>Explore the opportunity</span>
-              <ArrowDown className="w-4 h-4 ml-1.5 group-hover:translate-y-1 transition-transform" />
+              About the seminar
+              <ArrowDown
+                aria-hidden="true"
+                className="w-4 h-4 ml-1.5"
+              />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom Event Information Strip & Media Controls */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto border-t border-white/15 pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        {/* Info Badges */}
-        <div className="flex flex-wrap items-center gap-4 sm:gap-8 text-xs sm:text-sm text-white/80 font-normal">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#7BCB88]"></span>
-            <span className="font-medium text-white">Online seminar</span>
-          </div>
+      <div className="relative z-10 max-w-7xl w-full mx-auto border-t border-white/15 pt-6">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-8 text-xs sm:text-sm text-white/80">
+          <p className="flex items-center gap-2">
+            <span
+              aria-hidden="true"
+              className="w-2 h-2 rounded-full bg-[#7BCB88]"
+            />
+            Free online seminar
+          </p>
 
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#7BCB88]" />
-            <span>Date to be announced</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-[#7BCB88]" />
-            <span>Free registration</span>
-          </div>
-
-
-        </div>
-
-        {/* Controls: Video Pause/Play & Scroll Indicator */}
-        <div className="flex items-center gap-4 text-xs text-white/60">
-
-          <button
-            onClick={onExploreClick}
-            className="hidden sm:inline-flex items-center gap-1.5 text-white/60 hover:text-[#7BCB88] transition-colors cursor-pointer"
-          >
-            <span>Scroll</span>
-            <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
-          </button>
+          <p className="flex items-center gap-2">
+            <Calendar
+              aria-hidden="true"
+              className="w-4 h-4 text-[#7BCB88]"
+            />
+            Date and time to be announced
+          </p>
         </div>
       </div>
     </section>
   );
-};
+}
